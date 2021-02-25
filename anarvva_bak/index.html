@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Anarvva</title>
+    <meta name="author" content="Pal Nio" />
+    <meta name="description" content="" />
+    <meta name="keywords"  content="" />
+    <meta name="Resource-type" content="Document" />
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/identity.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="dist/examples.css" />
+    <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="dist/common.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa6mNrfx2rsr-S_7b5Asji6DW4E1aJVd8&callback=initMap"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script type="text/javascript" src="dist/fullpage.js"></script>
+        <script data-require="bootstrap@*" data-semver="3.3.6" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+  <link href="dist/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.7/jquery.slimscroll.js"></script>
+  <link href="dist/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet">
+  <script src="dist/bootstrap-sweetalert/sweet-alert.min.js"></script>
+
+    <script type="text/javascript">
+        var userlat,userlng;
+        navigator.permissions.query({name:'geolocation'})
+          .then(function(permissionStatus) {
+            console.log('geolocation permission state is ', permissionStatus.state);
+
+            permissionStatus.onchange = function() {
+              console.log('geolocation permission state has changed to ', this.state);
+            };
+          });
+        //using document ready...
+        $(document).ready(function(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (p) {
+                    userlat = p.coords.latitude;
+                    userlng = p.coords.longitude;
+                    console.log(p.coords.latitude,"--",p.coords.longitude);
+                });
+            } else {
+                alert('Geo Location feature is not supported in this browser.');
+            }
+            var location = document.getElementById('emirates').value;
+            getCategories(location);
+
+// sectionsColor: ['#2a94cd', '#e6c743', '#74e0bf', '#75579d', '#242128', '#d3eff6'], 3c7da4 (3c89bc, 4a95c6)
+            //initialising fullpage.js in the jQuery way
+            $('#fullpage').fullpage({
+                // sectionsColor: ['#0a8ac2', '#e2c13a', '#5addb5', '#694a92', '#c8ecf2', '#d3eff6'],
+               //sectionsColor: ['#4a95c6', '#ebbe37', '#74e0bf', '#75579d', '#FFFFFF', '#c5e9f3'],
+                navigation: true,
+                slidesNavigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['First page', 'What is it', 'How it works', 'Our Team', 'Our App', 'Refer us'],
+                scrollingSpeed: 1000,
+                
+                afterRender: function(index, nextIndex, direction){
+                   if(index.index == 0){
+                    document.getElementById("fp-nav").style.display = 'none';
+                }  
+                },
+                afterLoad: function(index, nextIndex, direction){
+
+                if(index.index == 1 && direction == 'up'){
+                    document.getElementById("fp-nav").style.display = 'none';
+                } else if(index.index == 0 && direction == 'down'){
+                document.getElementById("fp-nav").style.display = 'inline-block';
+                } else {
+                document.getElementById("fp-nav").style.display = 'inline-block';
+                }          
+                },
+                onLeave: function(index, nextIndex, direction){
+                var leavingSection = $(this);
+                doanimation();
+                console.log(index.index);
+                console.log(direction);
+                //after leaving section 1
+               
+        }
+            });
+
+            $('#moveSectionDown').click(function(e){
+                e.preventDefault();
+                $.fn.fullpage.moveSectionDown();
+            });
+
+            $("#moveSectionUp").click(function(e){
+                e.preventDefault();
+                $.fn.fullpage.moveTo(1);
+            })
+        });
+        $(function () {
+  
+$('.md-trigger').on('click', function() {
+    $('.md-modal').addClass('md-show');
+    //document.getElementById('personalform').style.display = 'block';
+    // document.getElementById('deliveryform').style.display = 'none';
+  });
+  
+  $('.md-close').on('click', function() {
+    $('.md-modal').removeClass('md-show');
+  });
+  $('.md-trigger1').on('click', function() {
+    $('.md-modal1').addClass('md-show');
+  });
+  
+  $('.md-close1').on('click', function() {
+    $('.md-modal1').removeClass('md-show');
+  });  
+
+
+  $('.md-trigger2').on('click', function() {
+    $('.md-modal2').addClass('md-show');
+  });
+  
+  $('.md-close2').on('click', function() {
+    $('.md-modal2').removeClass('md-show');
+  }); 
+
+  // TERMS AND CONDITION
+  $('.md-trigger_tc').on('click', function() {
+    $('.md-modal_tc').addClass('md-show');
+  });
+  
+  $('.md-close_tc').on('click', function() {
+    $('.md-modal_tc').removeClass('md-show');
+  });
+
+var viewportHeight= $(window).height();
+$('#form_det').slimScroll({
+    height: viewportHeight+'px',
+    width: '100%',
+    size : '0px',
+    color: '#455A64',
+    distance: '0',
+    allowPageScroll: true, 
+    alwaysVisible: true     
+});
+
+var viewportHeight= $(window).height();
+$('#vendor_list').slimScroll({
+    height: viewportHeight+'px',
+    width: '100%',
+    size : '0px',
+    color: '#455A64',
+    distance: '0',
+    allowPageScroll: true, 
+    alwaysVisible: true     
+});
+
+      var viewportHeight= $(window).height();
+$('#about_us_div').slimScroll({
+    height: viewportHeight+'px',
+    width: '100%',
+    size : '0px',
+    color: '#455A64',
+    distance: '0',
+    allowPageScroll: true, 
+    alwaysVisible: true     
+});
+
+ var viewportHeight= $(window).height();
+$('#faq_div').slimScroll({
+    height: viewportHeight+'px',
+    width: '100%',
+    size : '0px',
+    color: '#455A64',
+    distance: '0',
+    allowPageScroll: true, 
+    alwaysVisible: true     
+});
+// TERMS AND CONDITION
+ var viewportHeight= $(window).height();
+$('#terms_and_cond_div').slimScroll({
+    height: viewportHeight+'px',
+    width: '100%',
+    size : '0px',
+    color: '#455A64',
+    distance: '0',
+    allowPageScroll: true, 
+    alwaysVisible: true     
+});
+
+});
+    </script>
+
+   
+        <!--[if IE]>
+            <script type="text/javascript">
+                 var console = { log: function() {} };
+            </script>
+        <![endif]-->
+</head>
+<body>
+
+<div id="fullpage">
+    <div class="section home" id="section0">
+        <video id="scene1_video" class="myVideo bg_video_1" muted data-autoplay playsinline onended="run1()">
+            <source src="imgs/Scene-1.mp4" type="video/mp4" >
+            <source src="imgs/Scene-1.webm" type="video/webm">
+        </video>
+
+        <video id="scene1_video1" class="myVideo bg_video_1" muted loop data-autoplay playsinline style="display: none;">
+            <source src="imgs/Scene-1-Loop.mp4" type="video/mp4" >
+            <source src="imgs/Scene-1-Loop.webm" type="video/webm">
+        </video>
+
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="/" class="anarvva_logo"><img src="imgs/logo_anarvva-white.svg"/></a>
+                <ul class="header_right_ul">
+                    <li><a href="javascript:void(0)" class="md-trigger">Vendors</a></li>
+                    <!-- <li><a class="md-trigger2" href="#">FAQ</a></li>  -->
+                    <li><a href="https://app.anarvva.com/customer/login" >Login</a></li>
+                    <!-- <li><a href="https://app.anarvva.com/vendor/login" >Vendor Login</a></li> -->
+                    <li><a href="https://app.anarvva.com/customer/registration" class="buycard">Register</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="ExperienceNow">
+            <a id="moveSectionDown" href="#" style="text-decoration: none;font-size: 22px">Experience Now <span class="arrow"><img src="imgs/arrow.png" /></span></a>
+        </div>
+        <div class="readydiv">
+            Ready <br>to Save as <br>Much as you Shop?
+        </div>
+        <div class="nowyour">
+            <span>Now your everyday shopping <br>expenses are fully covered by <span class="cashunder">Anarvva!</span></span>
+        </div>
+        <ul class="footer_menu">
+            <li><a href="#" class="md-trigger1">About Us</a></li>
+            <li><a href="#" class="md-trigger_tc">Terms & Conditions</a></li>
+            
+        </ul>
+    </div>
+    <div class="section section_2" >
+        <video id="scene2_video" class="myVideo bg_video_2" muted data-autoplay playsinline onended="run2()">
+            <source src="imgs/Scene-2.mp4" type="video/mp4">
+            <source src="imgs/Scene-2.webm" type="video/webm">
+        </video>
+
+         <video id="scene2_video2" class="myVideo bg_video_2" muted loop data-autoplay playsinline style="display: none;">
+            <source src="imgs/Scene-2-Loop.mp4" type="video/mp4" >
+            <source src="imgs/Scene-2-Loop.webm" type="video/webm">
+        </video>
+
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="https://app.anarvva.com/customer/registration"><img src="imgs/icon1.png" class="buycard"  /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="lookno">
+            <p class="looknofurther"> <span class="">Look no Further, <br>Enjoy <span class="cashunder">100%</span> Cashback!</span> </p>
+            <p class="Shopwith">Shop with Anarvva Partners and choose from <br>many diverse of Grocery Stores, <span>Restaurants and Cafes.</span></p>
+        </div>
+        <ul class="footer_menu yellow">
+            <li><a href="#" class="md-trigger1">About Us</a></li>
+            <li><a href="javascript:void(0)" class="md-trigger_tc" >Terms & Conditions</a></li>
+            
+        </ul>
+    </div>
+    <div class="section thirdcls">
+        <video id="scene3_video" class="myVideo bg_video_3" muted data-autoplay playsinline onended="run3()">
+            <source src="imgs/Scene-3.mp4" type="video/mp4">
+            <source src="imgs/Scene-3.webm" type="video/webm">
+        </video>
+
+
+         <video id="scene3_video3" class="myVideo bg_video_3" muted loop data-autoplay playsinline style="display: none;">
+            <source src="imgs/Scene-3-Loop.mp4" type="video/mp4" >
+            <source src="imgs/Scene-3-Loop.webm" type="video/webm">
+        </video>
+
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="/" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="https://app.anarvva.com/customer/registration"><img src="imgs/icon1.png" class="buycard"/></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="howiswork">
+            <div class="makeshop"> <span class="cashunder">Balance </span> your Expenses with Savings!</div>
+            <p class="statics">Shopping is a therapy, Isn’t it? <br>Don't give up on it.
+                </p>
+            <p class="heretohelp">Anarvva is here to Help!</p>
+            <p class="savetime" style="margin-top: -12px">Shop and Save every time.</p>
+        </div>
+        <ul class="footer_menu green">
+            <li><a href="#" class="md-trigger1">About Us</a></li>
+            <li><a href="javascript:void(0)" class="md-trigger_tc">Terms & Conditions</a></li>
+            
+        </ul>
+    </div>
+    <div class="section fouth">
+        <video id="scene4_video" class="myVideo bg_video_4" muted data-autoplay playsinline onended="run4()">
+            <source src="imgs/Scene-4.mp4" type="video/mp4">
+            <source src="imgs/Scene-4.webm" type="video/webm">
+        </video>
+
+         <video id="scene4_video4" class="myVideo bg_video_4" muted loop data-autoplay playsinline style="display: none;">
+            <source src="imgs/Scene-4-Loop.mp4" type="video/mp4" >
+            <source src="imgs/Scene-4-Loop.webm" type="video/webm">
+        </video>
+
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="/" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="https://app.anarvva.com/customer/registration"><img src="imgs/icon1.png" class="buycard"  data-modal="modal-12"/></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="neevrhide">
+            <span class="no">No &nbsp;</span>
+            <span class="Hidden">Hidden &nbsp;</span>
+            <span class="Policies">Policies &nbsp;</span>
+            <span class="and">and &nbsp;</span>
+            <span class="Charges">Charges! &nbsp;</span>
+            <span class="Our">Our &nbsp;</span>
+            <span class="Terms">Terms &nbsp;</span>
+            <span class="are">are &nbsp;</span>
+            <span class="Strictly">Strictly &nbsp;</span>
+            <span class="Open cashunder">Open! &nbsp;</span>
+        </div>
+        <div class="ourproduct">
+           Our product is created for <br>you, So are Our Terms & Conditions.<br> <b>You never spend Extra! </b><br>
+            <a href="#">Read More</a>
+        </div>
+        <ul class="footer_menu blue">
+            <li><a href="#" class="md-trigger1">About Us</a></li>
+            <li><a href="javascript:void(0)" class="md-trigger_tc">Terms & Conditions</a></li>
+            
+        </ul>
+    </div>
+    <div class="section section_5">
+        <video id="scene5_video" class="myVideo bg_video_5" muted data-autoplay playsinline onended="run5()">
+           <source src="imgs/Scene-5.mp4" type="video/mp4">
+           <source src="imgs/Scene-5.webm" type="video/webm">
+       </video>
+
+       <video id="scene5_video5" class="myVideo bg_video_5" muted loop data-autoplay playsinline style="display: none;">
+            <source src="imgs/Scene-5.mp4" type="video/mp4" >
+            <source src="imgs/Scene-5.webm" type="video/webm">
+        </video>
+
+
+       <div class="master_wrapper">
+           <div class="master_innerwrapper">
+               <a href="/" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+               <ul class="header_right_ul">
+                   <li><a href="https://app.anarvva.com/customer/registration"><img src="imgs/icon1.png" class="buycard"/></a></li>
+               </ul>
+           </div>
+       </div>
+
+       <div class="platformmaster">
+           <p class="platform">A platform<br> that makes<br> Spending <br><span class="cashunder">Easy!</span></p>
+           <p class="Onlineshopping">Online Shopping at your convenience!  <br>Order from your favorite or nearby shops and restaurants right away with 100% Cashback!</p>
+           <p class="Simplified">Simplified and Advanced <br> User Experience.</p>
+       </div>
+
+       <!-- <img src="imgs/platform.png" class="platformimg"/> -->
+       
+
+       <!-- <ul class="footer_menu black">
+           <li><a href="#" class="md-trigger1">About Us</a></li>
+           <li><a href="#">Terms & Conditions</a></li>
+           <li><a href="#">Contacts</a></li>
+       </ul> -->
+   </div>
+    <div class="section section_6">
+        <video id="scene6_video" class="myVideo bg_video_6" muted data-autoplay playsinline onended="run6()">
+            <source src="imgs/Scene-6.mp4" type="video/mp4">
+            <source src="imgs/Scene-6.webm" type="video/webm">
+        </video>
+
+        <video id="scene6_video6" class="myVideo bg_video_6" muted loop data-autoplay playsinline style="display: none;">
+            <source src="imgs/Scene-6-Loop.mp4" type="video/mp4" >
+            <source src="imgs/Scene-6-Loop.webm" type="video/webm">
+        </video>
+
+
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="/" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="https://app.anarvva.com/customer/registration"><img src="imgs/icon1.png" class="buycard"/></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="helpmaster">
+            <p class="Helpyou">Refer & <span class="cashunder">Earn</span></p>
+            <p class="Refer">Recommend your favorite Shops <br> and  become a Privileged Member of Anarvva!</p>
+            <p  class="heretohelp">Obtain captivating Benefits <br> from your Anarvva Card!</p>
+        </div>
+        
+       <!--  <ul class="footer_menu lightblue">
+            <li><a href="#" class="md-trigger1">About Us</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul> -->
+    </div>
+    <div class="section">
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="/" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="https://app.anarvva.com/customer/registration"><img src="imgs/icon1.png" class="buycard" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="join_us">
+            <p class="join_usfurther">Did you know! Statistics say <br>a person's Everyday Expenses <br> more than their <span class="cashunder">Savings?</span></p>
+            <p class="Joinwith">Join us now to know, how <br>Anarvva can increase your Savings!
+                </p>
+            <ul class="header_right_ul">
+            <li><a href="https://app.anarvva.com/customer/registration" class="joincard"  data-modal="modal-12">Register</a></li>
+            </ul>
+        </div>
+       <!--  <ul class="footer_menu yellow">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul> -->
+    
+    <div class="masterfooter">
+  <div class="col-md-6" id="footer_div">      
+<div class="row" style="padding-top: 5%">
+  <div class="col-md-4" style="padding-left: 10%">
+   <ul class="footer_menu_new black fstmenu">
+            <li><a href="javascript:void(0)" class="md-trigger1">About Us</a></li>
+            <li><a href="javascript:void(0)" class="md-trigger_tc">Terms & Conditions</a></li>
+            
+        </ul>
+  </div>
+  <div class="col-md-3">
+  <ul class="footer_menu_new black secmenu">
+            <li><a href="javascript:void(0)" class="md-trigger2">FAQ</a></li>
+            <li><a href="javascript:void(0)" class="md-trigger">Vendors</a></li>
+        </ul>
+  </div>
+  <div class="col-md-4">
+        <ul class="footer_menu_new black adress">
+            <li><img src="imgs/marker.png" class="icons" /> <a href="#" style="text-decoration: none;">Saba Tower 1, Cluster E, <br>JLT, 8th Floor, Office 802.</a></li>
+            <li><img src="imgs/mail.png" class="icons" /> <a href="#"  style="text-decoration: none;">info@anarvva.com</a></li>
+        </ul>
+  </div>
+</div>
+<div class='demopadding'>
+  <div class='icon social fb'><a href="https://www.facebook.com/Anarvva/?ref=nf" target="_blank"><i class='fa fa-facebook'></i></a></div>
+  <!-- <div class='icon social tw'><a href="https://twitter.com/anarvva?s=08"><i class='fa fa-twitter'></i></a></div> -->
+  <div class='icon social in'><a href="https://www.instagram.com/weareanarvva/" target="_blank"><i class='fa fa-instagram'></i></a></div>
+  <div class='icon social in'><a href="https://www.youtube.com/channel/UCwXslybTHekF9G4cbbW87Ww" target="_blank"><i class='fa fa-youtube-play'></i></a></div>
+</div>  
+
+   </div>
+         <div class="footer_wrapper">
+            <div class="master_innerwrapper">
+              
+                <ul class="header_right_ul">
+                    <li><a href="#" id="moveSectionUp" ><img src="imgs/top_arrow.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="footer_logo"><img src="imgs/logo_anarvva.svg" /></a>
+        <p class="smile">Always, We work with smile, Anarvva.com Copyright @2020. All rights reserved</p>
+    </div>
+    </div>
+</div>
+<div class="md-modal1 md-effect-12">
+    <div class="md-content">
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img class="logo_img" src="imgs/logo_anarvva.svg"/></a>
+                <ul class="header_right_ul">
+                    <!-- <li style="margin : 0 !important;"><a href="#" class="md-close1" style="font-size:5em !important;"><i class="fa  fa-times-circle-o" style="color: #008ecc;" aria-hidden="true"></i></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div id="about_us_div">
+        <div class="row" style="margin-top: 5%">
+            <div class="col-md-4">
+                <img src="imgs/identity.png" style="width:100%;padding: 20%;margin-top:20%;">
+            </div>
+            <div class="col-md-8" style="padding-right: 25%;">
+                <p><a href="#" class="md-close1"><i class="fa fa-arrow-left" style="color: orange;" aria-hidden="true"></i></a>       About Us</p>
+                <h2 style="color: #008ecb;font-size: 5em;font-weight: 900;"> We bring happiness.</h2><br>
+                <p class="p-text">We believe everyone should make the best purchase decisions with their money without having to think twice before spending</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;"> Anarvva is here to help.</h2><br>
+                <p class="p-text">We give everyone the power to buy their favorite products and make purchases just like every other day,they would do shopping at Grocery, Supermarket, Restaurants and Cafeteria for full 100% Cashback. And all they need to do is buy it through the Anarvva card or the Anarvva App.</p>
+            </div>
+        </div><br>
+        <div class="section" style="margin-left: -40px;">
+            <img src="imgs/aboutcard.png" style="width:100%">
+        </div><br><br><br><br><br>
+    </div>
+    </div>
+</div>
+
+<div class="md-modal2 md-effect-12">
+    <div class="md-content">
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="/" class="anarvva_logo"><img class="logo_img" src="imgs/logo_anarvva.svg"/></a>
+                <ul class="header_right_ul">
+                    <!-- <li style="margin : 0 !important;"><a href="#" class="md-close1" style="font-size:5em !important;"><i class="fa  fa-times-circle-o" style="color: #008ecc;" aria-hidden="true"></i></a></li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="faq_div">
+            <div class="row" style="margin-top: 5%">
+            <div class="col-md-4">
+                <img src="imgs/identity.png" style="width:100%;padding: 20%;margin-top:20%;">
+            </div>
+            <div class="col-md-8">
+                <p><a href="#" class="md-close2"><i class="fa fa-arrow-left" style="color: orange;" aria-hidden="true"></i></a>       FAQ</p>
+                <h2 style="color: #008ecb;font-weight: 900;">1. How can I open an Anarvva Account?</h2><br>
+                <p class="p-text">Well, you can register Online through our website www.anarvva.com.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">2. What are the benefits of Anarvva?</h2><br>
+                <p class="p-text">Interesting Question! You will get 100% Cashback on all your Purchases of Grocery & Food through our Anarvva registered Vendors (Grocery Stores, Supermarkets, Cafeteria & Restaurants).</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">3. Is this Anarvva 100% Cashback being real or one other scam? How can I trust that Anarvva will give 100% Cashback?</h2><br>
+                <p class="p-text">Anarvva 100% Cashback is real.</p>
+                <p class="p-text">We are not asking for any of your personal credentials, all that we need is your email id and Mobile Number to Register yourself with Anarvva which is the only way we can Validate you and your Purchases. This is a common practice in all Grocery shops / Supermarket’s/ Cafeteria / Restaurants etc. </p>
+                <p class="p-text">We are not asking for you to pay more to any of the items you wish to buy from our Anarvva registered Vendors because we have made it mandatory through our agreement to all our Vendors that they will not charge anything more than the normal / regular charges with respect that area. </p>
+                <p class="p-text">We are not compelling you to buy from one shop, but for your convenience we have listed more shops/restaurants nearby and we will be listing more in the coming days. You can shop/buy at any of your nearby shop/restaurant that’s convenient to you. For now, we have partnered with Grocery Shops / Supermarkets / Cafeteria / Restaurants. In future we will work strategies to bring in Hypermarkets / Fast Food (Pizza, Burgers, Chicken etc.) / Branded Coffee Shops / Electronics / Pharmacy / Salons / Beauty SPA etc. </p>
+                <p class="p-text">We are not asking for any additional payment other than a one-time registration fee.</p>
+                <p class="p-text">All that we are requesting you to do is; whatever your regular Purchases related to Grocery and Food, just do Purchase from our Anarvva Registered Vendors and you will be eligible for 100% Cashback. </p>
+                <p class="p-text">Isn’t this an Amazing Opportunity? While we all are on the lookout for Quality Products/Services with best Offers as most of us go around looking for what are the best discount shops? where do we get better Offers? Etc., Anarvva is here to help you buy all that you wish at your convenience and earn 100% Cashback.</p>
+                <p class="p-text">With lots ground work and the one & only thought “CUSTOMER’S FIRST” that has led us to reinvent this 100% Cashback Loyalty Program, we a team of Customer Oriented Professional assure you that you will be given this 100% Cashback for all your Grocery / Supermarket / Cafeteria / Restaurant Purchases.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">3. How can I earn cashback on my Anarvva?</h2><br>
+                <p class="p-text">Well, the moment you spent AED 1000 using Anarvva Registered Mobile Number, you will start getting 100% cashback loaded to your Anarvva Account.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">4. How can I earn Cashback on my Anarvva Account and what’s the Eligibility?</h2><br>
+                <p class="p-text">Well, the moment your Purchases reach AED 1000 using Anarvva Registered Mobile Number, you will be eligible for 100% Cashback which will be confirmed to you by a message directly from Anarvva. The Eligibility to receive Cashback from Anarvva is;</p>
+                <p class="p-text">Every time You Purchase Your Grocery/Food, be it in the store or order online with our Vendors, Your Purchase has to be Validated at the respective Vendor using Your registered Mobile number. Its Your right to earn the Cashback and Please ask for it with the Vendor for Validation and Confirm the same immediately.</p>
+                <p class="p-text">Its also the Vendors responsibility to Validate your Purchases.</p>
+                <p class="p-text">Anarvva needs minimum 1 to 3 weeks’ time to Validate Your Purchase from the respective Vendors. </p>
+                <p class="p-text">Once the Validation Process is completed & confirmed from the Vendors, Anarvva will approve the respective Purchase and likewise Anarvva will continue to Validate the Customers Purchases. Once a Customer reaches their Purchase of AED 1,000 then Anarvva will send the eligible Customer a message to their registered Anarvva Account that a Customer is eligible for 100% Cashback.</p>
+                <p class="p-text">With all above explanation we are very sure that we all are on same line of understanding of how Anarvva will extend the 100% Cashback to our Customers.</p>
+                <p class="p-text">There will be no delay or decline of Anarvva Cashback to Customers, the only reason may be if the respective Vendor doesn’t approve Your Purchase as per Anarvva Procedures.</p>
+                <p class="p-text">If in case by any chance Customers feel there is any discrepancy, please do bring it to Anarvva Customer Support Team (WhatsApp: +971 55 11 88 350 or support@anarvva.com) and we will update you the status on Your Anarvva Cashback Account.</p>
+                <p class="p-text">Anarvva will help you with details of discrepancy if any and at this point of time, Customers can approach the respective Vendor, Claim Your Purchases by Validating the same with Anarvva Support.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">5. When will I get the Cashback from Anarvva?</h2><br>
+                <p class="p-text">Cashback is not Instant, but will be credited to your Anarvva Account in 4 Instalments i.e., CashPoints AED (150+150+200+500). Your Anarvva Account will receive this Cashback Points directly from Anarvva with a minimum of 45 days to maximum 6 months duration). This duration can be earlier than specified which depends on our business reach in UAE. Please Note: This 100% Cashback is purely from the revenue that we generate through your business at the respective Vendors and their Payments to Anarvva on timely basis. In the event that any Vendor delays the respective Payment, there will be proportionate delay in your Cashback duration. So, its utmost important as  a Anarvva Customer that every time you do your shopping, you have to get your Purchases Validated at the respective counter through your Registered Mobile Number.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">6. What if in case I don’t receive the Cashback?</h2><br>
+                <p class="p-text">Anarvva is determined to serve Customers and that’s why we have come up with this AMAZING OPPORTUNITY FOR EVERY CUSTOMER TO SAVE WHAT THEY SPEND, we always follow the simple Policy “CUSTOMERS FIRST”, So be rest assured if you have Validated your Purchase and the Vendors pays to us on-time, we will make sure to get your Cashback on-time</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">7. Is there a minimum spend required to earn Cashback?</h2><br>
+                <p class="p-text">Yes, its AED 1000. this can happen in a day, a week or 2+ months which depends on every Individual or Families. There's no locking period. Anytime your Purchases reach AED 1000, you will be eligible for your 100% Cashback Points.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">8. Is there any cap on the Cashback rewards I can earn each month?</h2><br>
+                <p class="p-text">No Cap, you can Earn UNLIMITED! Earn as much as you Spend.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">9. How can I redeemmy Anarvva 100% Cashback?</h2><br>
+                <p class="p-text">Anarvva Cashback Points is nothing but complete Cashback from Anarvva. Once you are eligible for 100% Cashback, Anarvva will get your Account credited with Anarvva Cash Points in 4 Intervals as mentioned in the above lines and you redeem Anarvva Cashback Points to Purchase your Grocery / Food at our Anarvva registered Vendors. After June 2021 you can use our Anarvva Cashback Points to book your Air tickets, pay your utility bills, book your hotel stay etc.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">10. When will my Cashback balance expire?</h2><br>
+                <p class="p-text">There is NO EXPIRY for your Cashback! But Account Validity is for 2 years and within which Customers have to renew your Anarvva Account to enjoy the Cashback benefits.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">11. How much is the Registration fee cost?</h2><br>
+                <p class="p-text">AED100/-</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">12. How much is the Registration Renewal fee cost?</h2><br>
+                <p class="p-text">AED100/-</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">13. What is the validity of Anarvva Account?</h2><br>
+                <p class="p-text">2 Years, after 2 Years You need to renew your Anarvva Account paying AED100/-</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">14. Can I update my Profile?</h2><br>
+                <p class="p-text">For Sure! Through the Anarvva Website. </p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">15. Can Anarvva Customer Account be registered under Company's Name?</h2><br>
+                <p class="p-text">NO, Anarvva Cashback Loyalty Program is only for Individual and Family use. It’s not for Retail or Business use. In case of any mis-use, that particular account will be deactivated from Anarvva 100% Cashback Loyalty Program.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">16. How can I check my Anarvva balance?</h2><br>
+                <p class="p-text">In your Anarvva Account, Sign in using your Registered Mobile Number.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">17. Can I withdraw Cash from my Anarvva Account?</h2><br>
+                <p class="p-text">No, for now you cannot withdraw your Anarvva Cashback Points. You can only redeem at one of your favorite or nearby Anarvva registered Vendors.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">18. How much Cashback Points I will earn once I reach AED 1000 Purchase.</h2><br>
+                <p class="p-text">As the name itself indicates Anarvva 100% Cashback; for every AED 1000 Purchase of Grocery or Food, you will be eligible for AED 1000 Cashback Points which is equal to AED 1000 redeem for your Purchases at Grocery/Supermarkets/Cafeteria/Restaurants.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">19. Can I use the Anarvva Account outside the UAE?</h2><br>
+                <p class="p-text">No, for now Anarvva can be used only inside UAE. Any future developments will be updated to all our Customers. </p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">20. Is there any annual maintenance fee?</h2><br>
+                <p class="p-text">No, there is no maintenance fee.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">21. How many Anarvva Accounts can I register?</h2><br>
+                <p class="p-text">One registration per Mobile Number. We strictly advice and recommend one registration for each Individual. In case of a group of Individuals pooling together, then its upto their understanding and co-operation.</p>
+                <p class="p-text">Even in case of a Family/Families, we recommend one registration which will help the Family reach their AED 1000 Purchase faster and earn the Cashback at earliest than considered to 2 or more Accounts with split Purchases.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">22. What if I have to change my Registered Mobile Number or if in case, I lost my Registered Mobile number or it gets Deactivated?</h2><br>
+                <p class="p-text">Anarvva will consider your written request through your registered email id and you don’t have to pay additional fee within the 2-year duration. Your registration is valid for 2 years from the date of your first registration.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">23. What are my privileges if I refer my favorite Shop / Restaurant?</h2><br>
+                <p class="p-text">You will be rewarded with plenty of exclusive offers at your favorite destinations. Please do send the details such as name, location & contact person with contact details to us WhatsApp: +971 55 11 88 350 and once these Vendors gets registered, we will reward respective Customer accordingly with Anarvva Cashback Points/Vouchers.</p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">24. What are my privileges if I refer my friend?</h2><br>
+                <p class="p-text">Its in Process and will be updated as and when ready. </p><br>
+                <h2 style="color: #008ecb;font-weight: 900;">25. What do I do if I need any Customer support from Anarvva?</h2><br>
+                <p class="p-text">Yes, you will get Customer support through support@anarvva.com or WhatsApp: +971 55 11 88 350.</p>
+                <p class="p-text">We all know, in today’s competitive world most of us spend a lot of time looking for offers, discounts, cashback, loyalty points etc. in order to save while we have to spend for our routine expenses.</p>
+                <p class="p-text">We all are glad to be in the land of UAE, we are being showered with so many offers & discounts and at times its really confusing to choose the right place to do our shopping. To make this easy for you, at Anarvva We have Completely re-invented the Loyalty Cashback Program keeping one & only thought in mind "Customers First", giving you the Freedom to buy what you wanted without thinking twice.</p>
+                <p class="p-text">With Anarvva 100% Cashback Loyalty Program, you will always "Save what you Spend" without Compromising the Quality of the Grocery or Food you wish to buy.</p><br>
+                <h2 style="font-weight: 800;">We Proudly Welcome you all to be a part of this journey to Spend more > > Enjoy your Shopping > > Earn all that you Spend…</h2><br>
+            </div>
+            </div><br>
+            <div class="section" style="margin-left: -40px;">
+                <img src="imgs/aboutcard.png" style="width:100%">
+            </div><br><br><br><br><br>
+        </div>
+
+    </div>
+</div>
+
+<!-- TERMS AND CONDITION -->
+<div class="md-modal_tc md-effect-12">
+    <div class="md-content">
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img class="logo_img" src="imgs/logo_anarvva.svg"/></a>
+                <ul class="header_right_ul">
+                    <!-- <li style="margin : 0 !important;"><a href="#" class="md-close1" style="font-size:5em !important;"><i class="fa  fa-times-circle-o" style="color: #008ecc;" aria-hidden="true"></i></a></li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="terms_and_cond_div">
+            <div class="row" style="margin-top: 5%">
+            <div class="col-md-4">
+                <img src="imgs/identity.png" style="width:100%;padding: 20%;margin-top:20%;">
+            </div>
+            <div class="col-md-8">
+                <p><a href="#" class="md-close_tc"><i class="fa fa-arrow-left" style="color: orange;" aria-hidden="true"></i></a> TERMS AND CONDITIONS</p>
+                <p class="p-text">These terms and conditions form the basis of the Anarvva’s 100% Cashback Program (“Anarvva’s Terms and Conditions”) and
+                are effective from the Effective Date. The latest version of the Terms and conditions will always be available on
+                www.anarvva.com in English. Anarvva has the right to amend or make changes to these Terms and Conditions at any time. If
+                changes are made, Finance will notify Members of any material changes by sending an email to the email address provided by
+                the Member on the Application Form. Anarvva always recommends the Members to regularly review the Anarvva’s Terms and
+                Conditions on our website.</p><br>
+
+
+                <h2 style="color: #008ecb;font-weight: 900;">1. Definitions</h2><br>
+                <p class="p-text">AED or Dirham means the lawful currency of the UAE.</p><br>
+                <p class="p-text">Bonus Points means preferential or extra Points earned by the Member on a single Dirham transaction with the Eligible
+                Merchants or Merchant Partners or Program Partners.</p><br>
+                <p class="p-text">Eligible Currency(s) means AED other currencies acceptable to Anarvva.</p><br>
+                <p class="p-text">Eligible Merchants includes the following establishments:</p><br>
+                <p class="p-text">Eligible Merchants includes the following establishments:</p><br>
+                <ul>
+                    <li class="p-text">1. Groceries</li>
+                    <li class="p-text">2. Supermarkets</li>
+                    <li class="p-text">3. Cafeteria</li>
+                    <li class="p-text">4. Restaurants</li>
+                    <li class="p-text">5. or such other retail merchants or service providers as from time to time notified to the Members by Anarvva.</li>
+                </ul><br>
+                <p class="p-text">Effective Date means the date on or about the Application Form when the Anarvva Terms and Conditions take effect.</p>
+
+                <p class="p-text">Eligible Anarvva members means the Members who are qualified to enroll for the 100% Cashback Program.</p>
+
+                <p class="p-text">Anarvva means Anarvva L.L.C, its successors in title and permitted assigns.</p>
+
+                <p class="p-text">Merchant Partner means the companies’ offering 100% Cashback to Anarvva Members pursuant to any merchant agreement
+                between such Companies and Anarvva Finance.</p>
+
+                <p class="p-text">Points or Anarvva Points means Points or Units earned or redeemed (as the case may be) in relation to the 100% Cashback Program and in accordance with these Anarvva Terms and Conditions.</p>
+
+                <p class="p-text">Rewards means the Anarvva 100% Cashback Program account opened and maintained for an Eligible Anarvva Member and
+                shall form the statement of account in relation to the Points earned or redeemed by the Member under the 100 % Cash back
+                Program</p>
+
+                <p class="p-text">100% Cashback Program App means a Mobile App Login provided to the Anarvva Member to track the 100% Cashback offe r e d
+                by each Merchant Partner, 100% Cashback Program Partner or Eligible Merchant</p>
+
+                <p class="p-text">100% Cashback Program Partners means the independent third-party merchants with whom Anarvva has entered into an agreement to provide for Anarvva Members to earn Bonus Points.</p>
+
+                <p class="p-text">UAE means the United Arab Emirates.</p>
+                <br><br>
+
+ 
+
+                <h2 style="color: #008ecb;font-weight: 900;">2. Interpretation</h2><br>
+                <ul >
+                    <li class="p-text">(a). words denoting one gender shall include all other genders.</li>
+                    <li class="p-text">(b). words denoting the singular shall include the plural and vice versa; and</li>
+                    <li class="p-text">(c). words importing person shall include a sole proprietor, individual partnership firm, company, corporation or other natural or legal person whatsoever.</li>
+
+                    <li class="p-text">(d). references to a person shall be construed as references to an individual, firm, company, corporation, unincorporat e d body of persons or any government entity; and</li>
+
+                    <li class="p-text">(e). references to a person shall also include its successors in title and permitted assigns.</li>
+                </ul><br>
+
+                <h2 style="color: #008ecb;font-weight: 900;">3. 100% Cashback Program Eligibility</h2><br>
+                <p class="p-text">The 100% Cashback Program is available to persons register through our Website or Anarvva App.</p><br>
+
+
+                <h2 style="color: #008ecb;font-weight: 900;">4. Participating in the 100% Cashback Program</h2><br>
+
+                <p class="p-text">An Eligible Anarvva Member is registered at the time of completion and submission of the Application Fo rm. Once the Application Form of the Anarvva Member is accepted in.</p><br>
+
+
+                <h2 style="color: #008ecb;font-weight: 900;">5. 100% Cashback Offer</h2><br>
+
+                 <p class="p-text">An Eligible Anarvva Member will be entitled to earn 100% Cashback.</p>
+
+                <p class="p-text">Membership Type = Anarvva 100% Cashback</p>
+                <p class="p-text">Minimum Spent =  AED 1,000.00</p>
+                <p class="p-text">If the above Eligible Anarvva Member meets the minimum spend, as set out above, they will be eligible to accrue standard 100% Cashback. Every AED 1,000 Purchase will be eligible for AED 1,000 Cashback (Cashback Points).</p><br>
+
+
+                <h2 style="color: #008ecb;font-weight: 900;">6. Earning Bonus Points</h2><br>
+                 <ul >
+                    <li class="p-text">(a). The Anarvva Member may be eligible to earn Bonus Points from Eligible Merchants, 100% Cashback Program Partners
+                    or Merchants Partners from time to time at the sole discretion of Anarvva. Anarvva shall advertise or publicize any
+                    Bonus Point scheme and simultaneously notify the terms and conditions applicable to the earning of such Bonus
+                    Points.</li>
+                    <li class="p-text">(b). Any Bonus Points earned by the Anarvva Member if such Anarvva Member is found in breach of these Anarvva Terms and Conditions will be forfeited.</li>
+                   </ul><br>
+
+
+                <h2 style="color: #008ecb;font-weight: 900;">7. Cashback and Forfeiture of Points</h2><br>
+                <p class="p-text">The Anarvva Member shall receive each month a regular update of the Points accumulated in the Anarvva Member Statement of Accounts and the Cashback. The Anarvva Member shall be entitled to avail the Cashback by purc h asi n g
+                goods and services offered by the Eligible Merchants, 100% Cashback Program Partners or Merchant Partners (as t h e
+                case be). A list of such Eligible Merchants, 100% Cashback Program Partners or Merchant Partners and the relevant
+                offers of goods and services to be purchased by authenticating Anarvva Account by the Anarvva Member.</p>
+                <br>
+
+                <h2 style="color: #008ecb;font-weight: 900;">8. 100% Cashback</h2><br>
+                <p class="p-text">The Anarvva Member shall be entitled to redeem the 100% Cashback provided to the Anarvva Member by purchasing
+                goods and services offered by the 100% Cashback Program Partners, Merchant Partners or Eligible Merchants in exchange
+                of the Points earned by the Anarvva Member under the 100% Cashback Program. A list of such 100% Cashback Program
+                Partners, Merchant Partners or Eligible Merchants and the relevant offers of goods and services (to be purchase d b y t h e
+                Points) shall be made available to the Anarvva Member from time to time.</p>
+                  <ul >
+                    <li class="p-text">(a). The 100% Cashback Program Partners, Merchant Partners or Eligible Merchants participating in the 100% Cashback Program are subject to change and shall be notified to the Anarvva Members from time to time.</li>
+                    <li class="p-text">(b). The 100% Cashback must be redeemed in accordance with the Anarvva Terms and Conditions and the specifi c terms and conditions for such 100% Cashback will be made available to the Anarvva Member from time to time.</li>
+                    <li class="p-text">(c). Anarvva reserves the right to modify or cancel any 100% Cashback at any time without prior notice to the Anarvva Member</li>
+
+                    <li class="p-text">(d). Any disputes or claims in connection with the products and services purchased through the 100% Cashback should b e addressed directly between the Anarvva Member and the Merchant Partners, Eligible Merchants and 100% Cash back Program Partners</li>
+
+                    <li class="p-text">(e). In the event of customer complaining about the Merchant will immediately terminates the Anarvva’s Partnership with the Merchant.</li>
+                </ul>
+                <br>
+
+                 <h2 style="color: #008ecb;font-weight: 900;">9. Cancellation of Anarvva Membership and Transfer of Points</h2><br>
+                
+                  <ul >
+                    <li class="p-text">(a). Subject to these Anarvva Terms and Conditions, if a Anarvva Member voluntarily cancels the Membership, then the
+                    unused Points in the 100% Cashback Program Account shall be forfeited immediately and the Anarvva Memb e r sh al l
+                    have no recourse to the 100% Cashback Program or any benefits related thereto. If the Anarvva Member
+                    subsequently reinstates the Anarvva Account, the unused Points in relation to the cancelled Anarvva Account will
+                    remain forfeited from the date of voluntary cancellation.</li>
+                    <li class="p-text">(b). If a Anarvva Member who has more than one Anarvva Account and voluntarily cancels any such Anarvva
+                    Membership, then the Anarvva Member shall be entitled to transfer unused Points in the 100% Cashback Program t o
+                    the Anarvva Member.</li>
+                </ul>
+                <br>
+
+                  <h2 style="color: #008ecb;font-weight: 900;">10. General</h2><br>
+                
+                  <ul >
+                    <li class="p-text">(a). The Points accrued in the 100% Cashback Program Account do not constitute the property of the Anarvva Member
+                    and are not transferable by operation of law or otherwise to any person or entity and cannot be transferred to any
+                    other 100% Cashback Program Account.</li>
+                    <li class="p-text">(b). The Points accrued in the 100% Cashback Program Account have cash and monetary value and can be exchanged with ccc coo purchase from Anarvva’s Merchants.</li>
+                    <li class="p-text">(c). If Anarvva finds any fraud or other abuse relating to the accrual of Points by a Anarvva Member, then such Point fraudulently earned by the Anarvva Member shall be forfeited the Anarvva Members membership as well.</li>
+                    <li class="p-text">(d). Anarvva’s failure to enforce any provisions of the Anarvva Terms and Conditions does not constitute a waiver of such provision by Anarvva.</li>
+                    <li class="p-text">(e). All disputes or discrepancies regarding eligibility for the 100% Cashback Programme or the accrual or redemption of Points shall be resolved by Anarvva at its sole discretion</li>
+                    <li class="p-text">(f). Anarvva shall not be held liable for any damage or loss incurred by the Anarvva Member on purchase of any good s o r services through the 100% Cashback Program and Anarvva shall not represent or warrant in relation to the quality of such goods or services and such recourse shall be directly against the Merchant Partners, Eligible Merchants and 100% Cashback Program Partners.</li>
+                    <li class="p-text">(g). Anarvva assumes no responsibility for any loss of whatever nature resulting from the redemption of Points in the 100% Cashback Program.</li>
+                    <li class="p-text">(h). Anarvva assumes no responsibility for any loss of whatever nature resulting from the redemption of Points in the 100% Cashback Program.</li>
+                    <li class="p-text">(a). Anarvva shall not be held liable for the automatic forfeiture of any Points in the 100% Cashback Program Account pursuant to these Terms and Conditions.</li>
+                </ul>
+                <br>
+
+                 <h2 style="color: #008ecb;font-weight: 900;">11. Acceptance of Terms and Conditions</h2><br>
+                <p class="p-text">The Anarvva Member has signed the Application Form that denotes the Anarvva Members acceptance of the aforesaid Anarvva Terms and Conditions and Confirms that in the event of any changes being communicated to the Anarvva Member, Anarvva is not obliged to obtain any acknowledgment for receipt of such communication.</p>
+                <br>
+
+          
+            </div>
+            </div><br>
+            <div class="section" style="margin-left: -40px;">
+                <img src="imgs/aboutcard.png" style="width:100%">
+            </div><br><br><br><br><br>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="md-modal md-effect-12">
+    <div class="md-content" style="padding: 10px;">
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img class="logo_img" src="imgs/logo_anarvva.svg"/></a>
+                <ul class="header_right_ul" style="margin-top: -20px;">
+                    <li><a href="#" class="md-close"  data-modal="modal-12">x</a></li>
+                </ul>
+            </div>
+        </div><br>
+        <div class="" style="margin-top:100px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card1">
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group styled-select">
+                                <select id="emirates" onchange="locationchange(event);">
+                                <!-- <option value="Abu Dhabi">Abu Dhabi</option> -->
+                                <option value="Dubai">Dubai</option>
+                                <option value="Ajman">Ajman</option>
+                                <!-- <option value="Fujairah">Fujairah</option> -->
+                                <!-- <option value="Ras al Khaimah">Ras al Khaimah</option> -->
+                                <option value="Sharjah">Sharjah</option>
+                                <!-- <option value="Umm al Quwain">Umm al Quwain</option> -->
+                                </select>
+                                <span class="fa fa-angle-down"></span>
+                                
+                            </div>
+                            </div>
+                        </div>
+                        <div class="card-body" id="vendor_list">
+                            <!-- <div class="row" > -->
+                                <div class="col-md-3">
+                                    <div class="card custom-card">
+                                        <img src="imgs/placeholder-image.jpg" alt="  Animals" style="  border-radius: 10px 10px 0 0;width: 100%;">
+                                        <div style="padding: 0 15px 0 15px;">
+                                            <h3>Deenar Supermarket</h3>
+                                            <p class="card-text">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; P.O.Box, 13905, Dana Plaza, near Rona Fashion, Ajman 
+                                            </p>
+                                            <p class="card-text" style="width: 50%;float: left;">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>
+                                            <p class="card-text">
+                                                <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>  
+                                            <a href="https://app.anarvva.com/customer/registration" class="cus_button">Get Direction</a>                         
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card custom-card">
+                                        <img src="imgs/placeholder-image.jpg" alt="  Animals" style="  border-radius: 10px 10px 0 0;width: 100%;">
+                                        <div style="padding: 0 15px 0 15px;">
+                                            <h3>Deenar Supermarket</h3>
+                                            <p class="card-text">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; P.O.Box, 13905, Dana Plaza, near Rona Fashion, Ajman 
+                                            </p>
+                                            <p class="card-text" style="width: 50%;float: left;">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>
+                                            <p class="card-text">
+                                                <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>  
+                                            <a href="https://app.anarvva.com/customer/registration" class="cus_button">Get Direction</a>                         
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card custom-card">
+                                        <img src="imgs/placeholder-image.jpg" alt="  Animals" style="  border-radius: 10px 10px 0 0;width: 100%;">
+                                        <div style="padding: 0 15px 0 15px;">
+                                            <h3>Deenar Supermarket</h3>
+                                            <p class="card-text">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; P.O.Box, 13905, Dana Plaza, near Rona Fashion, Ajman 
+                                            </p>
+                                            <p class="card-text" style="width: 50%;float: left;">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>
+                                            <p class="card-text">
+                                                <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>  
+                                            <a href="https://app.anarvva.com/customer/registration" class="cus_button">Get Direction</a>                         
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card custom-card">
+                                        <img src="imgs/placeholder-image.jpg" alt="  Animals" style="  border-radius: 10px 10px 0 0;width: 100%;">
+                                        <div style="padding: 0 15px 0 15px;">
+                                            <h3>Deenar Supermarket</h3>
+                                            <p class="card-text">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; P.O.Box, 13905, Dana Plaza, near Rona Fashion, Ajman 
+                                            </p>
+                                            <p class="card-text" style="width: 50%;float: left;">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>
+                                            <p class="card-text">
+                                                <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>  
+                                            <a href="https://app.anarvva.com/customer/registration" class="cus_button">Get Direction</a>                         
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card custom-card">
+                                        <img src="imgs/placeholder-image.jpg" alt="  Animals" style="  border-radius: 10px 10px 0 0;width: 100%;">
+                                        <div style="padding: 0 15px 0 15px;">
+                                            <h3>Deenar Supermarket</h3>
+                                            <p class="card-text">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; P.O.Box, 13905, Dana Plaza, near Rona Fashion, Ajman 
+                                            </p>
+                                            <p class="card-text" style="width: 50%;float: left;">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>
+                                            <p class="card-text">
+                                                <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp; 0544557165 
+                                            </p>  
+                                            <a href="https://app.anarvva.com/customer/registration" class="cus_button">Get Direction</a>                         
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- <div class="col-md-6">
+                    <div id="map-canvas"></div>
+                </div> -->
+            </div>
+            <div class="row">
+                
+            </div>
+            
+            <!-- <div class="col-md-6 scrolling-page" style="padding : 0 0 0 0;" id="personalform">
+                <h2 class="personal_class"><span class="Personal">Personal &nbsp;</span><span class="Details">Details.</span></h2>
+                 <form id="personal">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Full Name <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control form-border" onkeypress="return onlyalphabetValidation(event)" id="name">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Phone Number <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control form-border" onkeypress="return onlynumberValidation(event)" id="mobile" maxlength="12">
+                        </div>    
+                    </div>                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Email <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control form-border" id="email">
+                        </div>
+                    </div>
+                     <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Whatsapp Number <span style="color: red;">*</span></label>
+                          <input type="text" class="form-control form-border" onkeypress="return onlynumberValidation(event)" id="wp_no" maxlength="12">
+                        </div>    
+                    </div>  
+                    <div class="col-md-12">
+                        <div class="form-group styled-select">
+                          
+                        <select id="emirates">
+                            <option value="Abu Dhabi">Abu Dhabi</option>
+                            <option value="Dubai">Dubai</option>
+                            <option value="Ajman">Ajman</option>
+                            <option value="Fujairah">Fujairah</option>
+                            <option value="Ras al Khaimah">Ras al Khaimah</option>
+                            <option value="Sharjah">Sharjah</option>
+                            <option value="Umm al Quwain">Umm al Quwain</option>
+                            </select>
+                            <span class="fa fa-angle-down"></span>
+                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary notifybtn" onclick="proceedpay()" >Notify Me</button>
+                    </div>
+                </form>
+            </div><br><br><br><br><br><br> -->
+          <!--   <div class="col-md-6" style="padding : 0 20% 0 0;" id="deliveryform">
+                <h2 style="color: #008ecb;font-size: 5em;font-weight: 900;"> Delivery Details.</h2>
+                <form id="delivery">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Address Line 1</label>
+                          <input type="text" class="form-control form-border" id="addr1">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Address Line 2</label>
+                          <input type="text" class="form-control form-border" id="addr2">
+                        </div>    
+                    </div>                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Landmark</label>
+                          <input type="text" class="form-control form-border" id="landmark">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label form-label">Pincode</label>
+                          <input type="text" class="form-control form-border" id="pincode">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary" onclick="proccedtopay()" style="background-color: orange;border-radius: 50px;font-size: 20px;color: white;border-color: orange;border-width: medium;padding: 17px;">Proceed to Pay</button>
+                    </div>
+                </form>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="md-overlay"></div>
+<script type="text/javascript" src="dist/examples.js"></script>
+
+</body>
+<script type="text/javascript">
+    // $('document').ready(function(){
+
+    // });
+
+    function doanimation(){
+      // Wrap every letter in a span
+        var textWrapper = document.querySelectorAll('.letters');
+        for (i = 0; i < textWrapper.length; i++) {
+           textWrapper[i].innerHTML = textWrapper[i].textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        }
+       
+
+        anime.timeline({loop: false})
+          .add({
+            targets: '.letter',
+            rotateY: [-90, 0],
+            duration: 1000,
+            delay: (el, i) => 45 * i
+          })
+        }
+    function scrTop(){
+        $("body").scrollTop(0);        
+        }
+
+</script>
+<script>
+let div,cardCount,speed,containerWidth,cardWidth;
+function updateSliderArrowsStatus(
+  cardsContainer,
+  containerWidth,
+  cardCount,
+  cardWidth
+) {
+    console.log(cardsContainer,"---",containerWidth,"---",cardCount,"---",cardWidth);
+    console.log($(cardsContainer).scrollLeft() + containerWidth <
+    cardCount * cardWidth + 15);
+    console.log($(cardsContainer).scrollLeft());
+  if (
+    $(cardsContainer).scrollLeft() + containerWidth <
+    cardCount * cardWidth + 15
+  ) {
+    $("#slide-right-container").addClass("active");
+  } else {
+    $("#slide-right-container").removeClass("active");
+  }
+  if ($(cardsContainer).scrollLeft() > 0) {
+    $("#slide-left-container").addClass("active");
+  } else {
+    $("#slide-left-container").removeClass("active");
+  }
+}
+function customScroll(){
+     div = $("#cards-container");
+       cardCount = $(div)
+        .find(".cards")
+        .children(".card").length;
+    console.log("Card Count",cardCount);
+       speed = 1000;
+       containerWidth = $(".container1").width();
+       cardWidth = 350;
+
+      updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
+}
+$(function() {
+    
+  // Scroll products' slider left/right
+
+  //Remove scrollbars
+  $("#slide-right-container").click(function(e) {
+    if ($(div).scrollLeft() + containerWidth < cardCount * cardWidth) {
+      $(div).animate(
+        {
+          scrollLeft: $(div).scrollLeft() + cardWidth
+        },
+        {
+          duration: speed,
+          complete: function() {
+            setTimeout(
+              updateSliderArrowsStatus(
+                div,
+                containerWidth,
+                cardCount,
+                cardWidth
+              ),
+              1005
+            );
+          }
+        }
+      );
+    }
+    updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
+  });
+  $("#slide-left-container").click(function(e) {
+    if ($(div).scrollLeft() + containerWidth > containerWidth) {
+      $(div).animate(
+        {
+          scrollLeft: $(div).scrollLeft() -cardWidth
+        },
+        {
+          duration: speed,
+          complete: function() {
+            setTimeout(
+              updateSliderArrowsStatus(
+                div,
+                containerWidth,
+                cardCount,
+                cardWidth
+              ),
+              1005
+            );
+          }
+        }
+      );
+    }
+    updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
+  });
+
+  // If resize action ocurred then update the container width value
+  $(window).resize(function() {
+    try {
+      containerWidth = $("#cards-container").width();
+      updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
+    } catch (error) {
+      console.log(
+        `Error occured while trying to get updated slider container width: 
+            ${error}`
+      );
+    }
+  });
+});
+var map ,infowindow , count = 0;
+var biddata = [];
+var pointMarker = [];
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: {lat: 25.153424, lng:  55.336197},
+    zoom: 12
+  });
+  infowindow = new google.maps.InfoWindow;
+}
+    //document.getElementById('deliveryform').style.display = 'none';
+  function deliverydetails(){
+    var name = document.getElementById('name').value;
+    var mobile = document.getElementById('mobile').value;
+    var email = document.getElementById('email').value;
+    if(name == "" || mobile == "" || email == ""){
+        swal("Please fill manditory filelds!");
+        return false;
+    }
+    var mailformat = emailValidation(email);
+    if(mailformat == -1){
+        swal("Please enter valid email address", "example@example.com");
+        return false;
+    }
+    //document.getElementById('deliveryform').style.display = 'block';
+    document.getElementById('personalform').style.display = 'none';
+  }
+  function locationchange(event){
+    //console.log(event.target.value);
+    getCategories(event.target.value);
+  }
+  function getCategories(value){
+    console.log(value);
+    var data;
+    if(value != ""){
+        data = {
+            location : value
+        }
+    }else{
+        data = "";
+    }
+     
+    var keyobj = {
+        'url':'https://api.anarvva.com/api/getVendorList',
+        'type': 'post',
+        'crossDomain': true,
+        'ajaxData': data,
+        'dataType': 'json',
+        'callback': function (success) 
+        {
+
+            var vendorData= [];
+            var collection = [];
+            vendorData = success.data;
+            var datalength = vendorData.length;
+            var pointMarkerImage =[];
+            $('#vendor_list').empty();
+            for(i =0;i< datalength;i++){
+                var address,location,address1,landline,mobile;
+                if(vendorData[i].company_address == null){
+                    address = "-";
+                }else{
+                    address = vendorData[i].company_address;
+                }
+                if(vendorData[i].location == null){
+                    location = "-";
+                }else{
+                    location = vendorData[i].location;
+                }
+                if(vendorData[i].company_phone == null){
+                    landline = "-";
+                }else{
+                    landline = vendorData[i].company_phone;
+                }
+                if(vendorData[i].company_mobile == null){
+                    mobile = "-";
+                }else{
+                    mobile = vendorData[i].company_mobile;
+                }
+                address1 = address+" "+location;
+                $('#vendor_list').append('<div class="col-md-3"><div class="card custom-card"><img src="imgs/placeholder-image.jpg" alt="  Animals" style="  border-radius: 10px 10px 0 0;width: 100%;"><div style="padding: 0 15px 0 15px;"><h3>'+vendorData[i].company_name+'</h3><p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;'+address1+'</p><p class="card-text" style="width: 55%;float: left;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp; '+landline+' </p><p class="card-text"><i class="fa fa-mobile" aria-hidden="true"></i>&nbsp; '+mobile+' </p><a href="https://www.google.com/maps/dir/'+userlat+','+userlng+'/'+vendorData[i].latitude+','+vendorData[i].longtitude+'" target="_blank" class="cus_button">Get Direction</a></div></div></div>');
+                // $('#vendor_list1').append('<div class="card custom-card"><div class="row custom-row"><div class="card-image"><img src="imgs/identity.png" alt="Animals"></div><div class="custom-container"><h4>'+vendorData[i].company_name+'</h4><p class="card-text">'+address+'</p><p class="card-text">'+location+'</p></div></div></div>');
+                // $('#vendor_list1').append('<div class="card"><img src="imgs/identity.png" alt="Animals" style="width:50px;margin-left:35%;margin-top:5%;"><div class="container"><h4>'+vendorData[i].company_name+'</h4><p class="card-text">'+address+'</p><p class="card-text">'+location+'</p></div></div>')
+                
+                // $('#vendor_list').append('<div class="list-card"><div class="row"><div class="col-md-3" style="padding: 20px;"><img src="imgs/identity.png"style="width: 100px; height:100px;"></div><div class="col-md-9"><h3>'+vendorData[i].company_name+'</h3><p class="card-text">'+address+'</p><p class="card-text">'+location+'</p></div></div></div>')
+            }
+            // if (pointMarker){
+            //     for(i=0;i<pointMarker.length;i++){
+            //     pointMarker[i].setMap(null);
+            //     }
+                
+            //   }
+            // if(datalength > 0){
+                
+            //   for(i=0;i<datalength;i++){
+            //     // if(vendorData[i].latitude == undefined || vendorData[i].latitude == null || vendorData[i].latitude == 'null' || vendorData[i].longitude == undefined || vendorData[i].longitude == null || vendorData[i].longitude == 'null'){
+
+            //     // }else{
+            //       collection.push({
+            //           "lat" : parseFloat(vendorData[i].latitude),
+            //           "lng" : parseFloat(vendorData[i].longtitude)
+            //       });
+            //     // }
+                
+            //   }
+            //   var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            //   var icon = {
+            //     url: "imgs/identity.png", // url
+            //     scaledSize: new google.maps.Size(50, 50), // scaled size
+            //     origin: new google.maps.Point(0,0), // origin
+            //     anchor: new google.maps.Point(0, 0) // anchor
+            // };
+            //   for(i=0;i<datalength;i++){
+            //     console.log(datalength);
+            //     console.log(collection[i]);
+            //     pointMarker[i] = new google.maps.Marker({
+            //         position: collection[i],
+            //         map: map,
+            //         // icon:icon,
+            //         title: vendorData[i].company_name 
+            //     });
+
+            //     google.maps.event.addListener(pointMarker[i], 'click', (function(marker, i) {
+            //          return function() {
+            //              infowindow.setContent(vendorData[i].company_name);
+            //              infowindow.open(map, pointMarker[i]);
+            //      }
+            //     })(pointMarker[i], i));
+            //   }
+            // }
+
+            // customScroll();
+
+        }
+    }
+    ajaxCallFunction(keyobj);
+
+  }
+  function proceedpay(){
+    var name = document.getElementById('name').value;
+    var mobile = document.getElementById('mobile').value;
+    var email = document.getElementById('email').value;
+    var wp_no = document.getElementById('wp_no').value;
+    var emirates = document.getElementById('emirates').value;
+    // var addr1 = document.getElementById('addr1').value;
+    // var addr2 = document.getElementById('addr2').value;
+    // var landmark = document.getElementById('landmark').value;
+    // var pincode = document.getElementById('pincode').value;
+    if(name == "" || mobile == "" || email == "" || wp_no == ""){
+        swal("Please fill manditory filelds!");
+        return false;
+    }
+    var mailformat = emailValidation(email);
+    if(mailformat == -1){
+        swal("Please enter valid email address", "example@example.com");
+        return false;
+    }
+     var data = 
+    {
+        "tag": "sendmail",
+        "name" : name,
+        "email" : email,
+        "mobile" : mobile,
+        "wp_no": wp_no,
+        "emirates" : emirates
+        // "addr1" : addr1,
+        // "addr2" : addr2,
+        // "landmark" : landmark,
+        // "pincode" : pincode
+    };
+    var keyobj = {
+        'url':'api.php',
+        'type': 'POST',
+        'crossDomain': true,
+        'ajaxData': data,
+        'dataType': 'json',
+        'callback': function (success) 
+        {
+
+            var status = success.status;
+            var user_data=[];
+            if(status == "success")
+            {
+                swal("Thanks for reaching out!  We'd be more than happy to help you.", "");
+                document.getElementById("personal").reset();
+                //document.getElementById("delivery").reset();
+                document.getElementById('personalform').style.display = 'block';
+                //document.getElementById('deliveryform').style.display = 'none';
+             }   
+            else
+            {
+                swal(success.message,"", "error");
+            }  
+
+        }
+    }
+    ajaxCallFunction(keyobj);
+
+  }
+  // Video Counter
+   // Video Counter
+  var video_count1 =1;
+  var video_count2 =1;
+  var video_count3 =1;
+  var video_count4 =1;
+  var video_count5 =1;
+  var video_count6 =1;
+  
+  function run1(){
+        // Video 1
+        document.getElementById('scene1_video').style.display = 'none';
+        document.getElementById('scene1_video1').style.display = 'block';
+    }
+    
+    function run2(){
+        // Video 2
+        document.getElementById('scene2_video').style.display = 'none';
+        document.getElementById('scene2_video2').style.display = 'block';
+    }
+    function run3(){
+        // Video 3
+        document.getElementById('scene3_video').style.display = 'none';
+        document.getElementById('scene3_video3').style.display = 'block';
+    }
+    function run4(){
+        // Video 4
+        document.getElementById('scene4_video').style.display = 'none';
+        document.getElementById('scene4_video4').style.display = 'block';
+    }
+    function run5(){
+        // Video 5
+        document.getElementById('scene5_video').style.display = 'none';
+        document.getElementById('scene5_video5').style.display = 'block';
+    }
+    function run6(){
+        // Video 6
+        document.getElementById('scene6_video').style.display = 'none';
+        document.getElementById('scene6_video6').style.display = 'block';
+    }
+            
+</script>
+</html>

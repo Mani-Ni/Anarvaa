@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Anarvva</title>
+    <meta name="author" content="Pal Nio" />
+    <meta name="description" content="" />
+    <meta name="keywords"  content="" />
+    <meta name="Resource-type" content="Document" />
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="dist/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="dist/examples.css" />
+
+    <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/fullpage.js"></script>
+
+    <script type="text/javascript">
+        //using document ready...
+        $(document).ready(function(){
+
+            //initialising fullpage.js in the jQuery way
+            $('#fullpage').fullpage({
+                sectionsColor: ['#217DA5', '#E7C643', '#52ceb6', '#6d5297', '#242128', '#c8eaf4'],
+                navigation: true,
+                slidesNavigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['First page', 'What is it', 'How it works', 'Our Team', 'Our App', 'Refer us'],
+                scrollingSpeed: 1000
+            });
+
+            $('#moveSectionDown').click(function(e){
+                e.preventDefault();
+                $.fn.fullpage.moveSectionDown();
+            });
+
+        });
+    </script>
+
+        <!--[if IE]>
+            <script type="text/javascript">
+                 var console = { log: function() {} };
+            </script>
+        <![endif]-->
+</head>
+<body>
+
+<div id="fullpage">
+    <div style="background-color: #217DA5;" class="section home" id="section0">
+
+        <video class="myVideo bg_video_1" loop muted data-autoplay>
+            <source src="imgs/Scene_1.mp4" type="video/mp4">
+            <source src="imgs/Scene_1.webm" type="video/webm">
+        </video>
+
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva-white.svg"/></a>
+                <ul class="header_right_ul">
+                    <li><a href="#">For Vendor</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#" class="buycard">Buy Card</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ExperienceNow">
+            <a id="moveSectionDown" href="#">Experience Now <span class="arrow"><img src="imgs/arrow.png" /></span></a>
+        </div>
+
+        <div class="readydiv">
+            Ready to Save as much as you Shop?
+        </div>
+
+        <div class="nowyour">
+            Now your everyday shopping expenses, covered by Anarvva!
+        </div>
+        <ul class="footer_menu">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="section">
+        <video class="myVideo bg_video_2" loop muted data-autoplay>
+            <source src="imgs/Scene_2.mp4" type="video/mp4">
+            <source src="imgs/Scene_2.webm" type="video/webm">
+        </video>
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="#"><img src="imgs/icon1.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="lookno">
+            <p class="looknofurther">Look no further, <br/> get <span class="cashunder">100%</span> cashback!</p>
+            <p class="Shopwith">Shop with Anarvva partners, <br/>choose from a variety
+                of grocery stores, restaurants and cafes.
+                </p>
+        </div>
+        <ul class="footer_menu yellow">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="section">
+        <video class="myVideo bg_video_3" loop muted data-autoplay>
+            <source src="imgs/Scene_3.mp4" type="video/mp4">
+            <source src="imgs/Scene_3.webm" type="video/webm">
+        </video>
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="#"><img src="imgs/icon1.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="howiswork">
+            <div class="makeshop">Balance your shopping with a good amount of Savings!</div>
+            <p class="statics">Shopping is therapy? Don't give up on it.
+                Shop and save at the same time. 
+                </p>
+            <p class="heretohelp">Anarvva is here to help!</p>
+        </div>
+        <ul class="footer_menu green">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="section">
+        <video class="myVideo bg_video_4" muted data-autoplay>
+            <source src="imgs/Scene4.mp4" type="video/mp4">
+            <source src="imgs/Scene_4.webm" type="video/webm">
+        </video>
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="#"><img src="imgs/icon1.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="neevrhide">
+            No hidden Policies, <br/>our Terms are strictly Open!
+        </div>
+        <div class="ourproduct">
+            Our product is created for you. So are our terms & conditions
+            <a href="#">Read More</a>
+        </div>
+        <ul class="footer_menu blue">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="section">
+
+        <div class="bg_white"></div>
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="#"><img src="imgs/icon1.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="platformmaster">
+            <p class="platform">A platform that makes shopping easy.</p>
+            <p class="Onlineshopping">Online shopping at your convenience, make purchases at your favorite ornearby shops right at the comfort of your place.</p>
+            <p class="Simplified">Simplified and advancedUser Experience.</p>
+        </div>
+
+        <img src="imgs/platform.png" class="platformimg"/>
+        
+
+        <ul class="footer_menu black">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="section">
+        <video class="myVideo bg_video_6" muted data-autoplay>
+            <source src="imgs/Scene_6.mp4" type="video/mp4">
+            <source src="imgs/Scene_6.webm" type="video/webm">
+        </video>
+        <div class="master_wrapper">
+            <div class="master_innerwrapper">
+                <a href="javascript:void(0)" class="anarvva_logo"><img src="imgs/logo_anarvva.svg" /></a>
+                <ul class="header_right_ul">
+                    <li><a href="#"><img src="imgs/icon1.png" /></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="helpmaster">
+            <p class="Helpyou">Help Us <br/> Help You!</p>
+            <p class="Refer">Refer your favorite shops and become a privileged member of Anarvva,</p>
+        </div>
+        
+        <ul class="footer_menu lightblue">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="section masterfooter">
+        <ul class="footer_menu lightblue">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Policy</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">For Vendor</a></li>
+        </ul>
+
+        <a href="javascript:void(0)" class="footer_logo"><img src="imgs/logo_anarvva.svg" /></a>
+        <p class="smile">We work with smile, Anarvva.com Copyrihgt @2020. All rights reserved</p>
+        <ul class="header_right_ul">
+            <li><a href="#" class="buycard">Buy Card</a></li>
+        </ul>
+    </div>
+    
+</div>
+
+<script type="text/javascript" src="dist/examples.js"></script>
+
+</body>
+</html>

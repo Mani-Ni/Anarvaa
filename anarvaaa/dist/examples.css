@@ -1,0 +1,939 @@
+@CHARSET "ISO-8859-1";
+/* Reset CSS
+ * --------------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+	margin: 0;
+	font-family: 'Clarika Grotesque';
+	font-weight: normal;
+	font-style: normal;
+}
+a{
+	text-decoration:none;
+}
+table {
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+strong{
+	font-weight: bold;
+}
+ol,ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+caption,th {
+    text-align: left;
+
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+    color:#444;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border: 0;
+}
+
+
+/* Custom CSS
+ * --------------------------------------- */
+body{
+	font-family: arial,helvetica;
+	color: #333;
+	color: rgba(0,0,0,0.5);
+}
+.wrap{
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	position: relative;
+}
+h1{
+	font-size: 6em;
+}
+p{
+	font-size: 2em;
+}
+.intro p{
+	width: 50%;
+	margin: 0 auto;
+	font-size: 1.5em;
+}
+.section{
+	text-align:center;
+}
+#menu li {
+	display:inline-block;
+	margin: 10px;
+	color: #000;
+	background:#fff;
+	background: rgba(255,255,255, 0.5);
+	-webkit-border-radius: 10px;
+            border-radius: 10px;
+}
+#menu li.active{
+	background:#666;
+	background: rgba(0,0,0, 0.5);
+	color: #fff;
+}
+#menu li a{
+	text-decoration:none;
+	color: #000;
+}
+#menu li.active a:hover{
+	color: #000;
+}
+#menu li:hover{
+	background: rgba(255,255,255, 0.8);
+}
+#menu li a,
+#menu li.active a{
+	padding: 9px 18px;
+	display:block;
+}
+#menu li.active a{
+	color: #fff;
+}
+#menu{
+	position:fixed;
+	top:0;
+	left:0;
+	height: 40px;
+	z-index: 70;
+	width: 100%;
+	padding: 0;
+	margin:0;
+}
+.twitter-share-button{
+	position: fixed;
+	z-index: 99;
+	right: 149px;
+	top: 9px;
+}
+#download{
+	margin: 10px 0 0 0;
+	padding: 15px 10px;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	background-color: #49afcd;
+	background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image: -ms-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from( #5bc0de),to( #2f96b4));
+	background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+	background-image: linear-gradient(top, #5bc0de, #2f96b4);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de', endColorstr='#2f96b4', GradientType=0);
+	border-color: #2f96b4 #2f96b4 #1f6377;
+	border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	vertical-align: middle;
+	cursor: pointer;
+	display: inline-block;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+}
+#download a{
+	text-decoration:none;
+	color:#fff;
+}
+#download:hover{
+	text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+	background-color: #2F96B4;
+	background-position: 0 -15px;
+	-webkit-transition: background-position .1s linear;
+	-moz-transition: background-position .1s linear;
+	-ms-transition: background-position .1s linear;
+	-o-transition: background-position .1s linear;
+	transition: background-position .1s linear;
+}
+#infoMenu{
+	height: 20px;
+	color: #f2f2f2;
+	position:fixed;
+	z-index:70;
+	bottom:0;
+	width:100%;
+	text-align:right;
+	font-size:0.9em;
+	padding:8px 0 8px 0;
+}
+#infoMenu ul{
+	padding: 0 40px;
+}
+#infoMenu li a{
+	display: block;
+	margin: 0 22px 0 0;
+	color: #333;
+}
+#infoMenu li a:hover{
+	text-decoration:underline;
+}
+#infoMenu li{
+	display:inline-block;
+	position:relative;
+}
+#examplesList{
+	display:none;
+	background: #282828;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	padding: 20px;
+	float: left;
+	position: absolute;
+	bottom: 29px;
+	right: 0;
+	width:638px;
+	text-align:left;
+}
+#examplesList ul{
+	padding:0;
+}
+#examplesList ul li{
+	display:block;
+	margin: 5px 0;
+}
+#examplesList ul li a{
+	color: #BDBDBD;
+	margin:0;
+}
+#examplesList ul li a:hover{
+	color: #f2f2f2;
+}
+#examplesList .column{
+	float: left;
+	margin: 0 20px 0 0;
+}
+#examplesList h3{
+	color: #f2f2f2;
+	font-size: 1.2em;
+	margin: 0 0 15px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+	padding: 0 0 5px 0;
+}
+
+
+
+/* Demos Menu
+ * --------------------------------------- */
+ #demosMenu{
+	position:fixed;
+	bottom: 10px;
+	right:10px;
+	z-index: 999;
+ }
+
+
+ .ExperienceNow{
+	position:fixed;
+	top: 55vh;
+    right: 3.4%;
+	z-index: 99999;
+	z-index: 1000;
+}
+.ExperienceNow a{
+	margin: 17px 17px 0 0;
+	color: #7bddff;
+	display: inline-block;
+}
+
+span.arrow {
+    border-radius: 20px;
+    border: 1px solid #7bddff;
+    float: right;
+    padding: 15px 10px;
+    max-height: 60px;
+    box-sizing: border-box;
+	max-width: 40px;
+	margin: -20px 0 0 16px;
+}
+
+/* Style for our header texts
+        * --------------------------------------- */
+        h1{
+            font-size: 5em;
+            font-family: arial,helvetica;
+            color: #fff;
+            margin:0;
+            padding:0;
+        }
+    
+        /* Centered texts in each section
+        * --------------------------------------- */
+        .section{
+            text-align:center;
+            overflow: hidden;
+        }
+    
+        .myVideo{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top:0;
+            right:0;
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+             background-color: black; /* in case the video doesn't fit the whole page*/
+              background-image: /* our video */;
+              background-position: center center;
+              background-size: contain;
+               object-fit: cover; /*cover video background */
+               z-index:3;
+        }
+    
+    
+    
+        /* Layer with position absolute in order to have it over the video
+        * --------------------------------------- */
+        #section0 .layer{
+            position: absolute;
+            z-index: 4;
+            width: 100%;
+            left: 0;
+            top: 43%;
+    
+            /*
+            * Preventing flicker on some browsers
+            * See http://stackoverflow.com/a/36671466/1081396  or issue #183
+            */
+            -webkit-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+    
+        /*solves problem with overflowing video in Mac with Chrome */
+        #section0{
+            overflow: hidden;
+        }
+    
+    
+        /* Bottom menu
+        * --------------------------------------- */
+        #infoMenu li a {
+            color: #fff;
+        }
+    
+    
+        /* Hiding video controls
+        * See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+        * --------------------------------------- */
+        video::-webkit-media-controls {
+          display:none !important;
+        }
+
+
+		.master_wrapper {
+			width: 93.2%;
+			margin: 0 auto;
+			position: absolute;
+			z-index: 10;
+			top: 0px;
+			text-align: left;
+			right: 0;
+			left: 0;
+			z-index: 1000;
+		}
+		.master_innerwrapper { width:100%; float: left; margin: 0px; padding: 0px;}
+		.anarvva_logo { margin: 31px 0 0 0; float: left; width: 120px;}
+		.header_right_ul { float: right;margin: 0px; padding: 0px;}
+		.header_right_ul li { float: left;margin: 37px 0 0 50px; padding: 0px;}
+		.header_right_ul li a { font-size: 17px; color: #dfefff;}
+
+		.anarvva_logo img { max-width: 120px; }
+
+		.header_right_ul li a.buycard {background: #ef820d;
+			padding: 15px 35px;
+			border-radius: 40px;
+			-webkit-box-shadow: 10px 7px 15px 0px rgba(0,0,0,0.2);
+			-moz-box-shadow:  10px 7px 15px 0px rgba(0,0,0,0.2);
+			box-shadow: 10px 7px 15px 0px rgba(0,0,0,0.2);font-size: 18px;}
+
+			.readydiv {
+				position: absolute;
+				left: 12.4%;
+				font-size: 52px;
+				font-weight: 900;
+				color: #fff;
+				max-width: 500px;
+				text-align: left;
+				bottom: 10%;
+				z-index: 1000;
+			}
+			.nowyour {
+				font-size: 22px;
+				color: #fff;
+				position: absolute;
+				right: 12%;
+				bottom: 10%;
+				max-width: 330px;
+				text-align: right;
+				z-index: 1000;
+			}
+			.nowyour:after {
+				content: "";
+				width: 80px;
+				height: 02px;
+				background: #ed830b;
+				bottom: -2px;
+				right: 0px;
+				position: absolute;
+			}
+.footer_menu {  position: absolute; bottom: 05%; left: 3.4%;text-align: left;z-index: 1000;}
+.footer_menu li a { color: #6dd6ff; font-size: 16px; text-align: left;}
+.footer_menu li { line-height: 24px;}
+
+.lookno {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+	top: 15%;
+	z-index: 1000;
+}
+.looknofurther {font-size: 60px;
+    font-weight: 900;color: #31342e;}
+.cashunder { position: relative;}
+.cashunder::after {
+    border-bottom: 4px solid #ed830b;
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.Shopwith {
+	font-size: 20px;
+	color: #555;
+	font-weight: 500;
+	margin-top: 15px;
+}
+
+.howiswork {
+	position: absolute;
+	width: 40%;
+	right: 0;
+	top: 50px;
+	text-align: left;
+	z-index: 500;
+	z-index: 1000;
+}
+.makeshop {
+	font-size: 60px;
+    font-weight: 900;
+    color: #31342e;
+    line-height: 60px;
+    width: 72%;
+}
+.statics {
+	font-size: 20px;
+	color: #555;
+	margin-top: 65px;
+	max-width: 400px;
+}
+.heretohelp {
+	font-size: 26px;
+	color: #555;
+	font-weight: 500;
+}
+
+.neevrhide {
+	font-size: 52px;
+    font-weight: 900;
+    color: #fff;
+	line-height: 60px;
+	position: absolute;
+	bottom: 10%;
+	left: 12.4%;
+	text-align: left;
+	z-index: 1000;
+	max-width: 400px;
+	
+}
+
+.ourproduct {
+    font-size: 22px;
+    color: #fff;
+    position: absolute;
+    right: 12%;
+    bottom: 10%;
+    max-width: 330px;
+	text-align: left;
+	z-index: 1000;
+}
+.ourproduct a {
+	background: #ef820d;
+    padding: 7px 20px;
+	border-radius: 20px;
+	font-size: 18px;
+	float: left;
+	color: #fff;
+    margin: 20px 0 0 0;
+}
+
+.bg_white { width: 50%; top: 0px; left: 0px; height: 100vh; background: #f6f7f9; position: absolute; z-index: 10; }
+
+.platformmaster {
+	position: absolute;
+	top: 10%;
+	left: 12.4%;
+	text-align: left;
+	z-index: 1000;
+	max-width: 400px;
+}
+.platform {
+	font-size: 60px;
+    font-weight: 900;
+    color: #31342e;
+    line-height: 60px;
+}
+.Onlineshopping {
+	font-size: 20px;
+    color: #435d5b;
+    margin: 65px 0 35px 0;
+	max-width: 360px;
+	font-weight: 500;
+}
+.Simplified {
+	font-size: 26px;
+    color: #435d5b;
+    font-weight: 500;
+}
+
+.helpmaster {
+	position: absolute;
+    bottom: 12.4%;
+    text-align: center;
+    z-index: 1000;
+    max-width: 400px;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+}
+.Helpyou {
+	font-size: 60px;
+    font-weight: 900;
+    color: #31342e;
+    line-height: 60px;
+}
+.Refer {
+	font-size: 20px;
+    color: #435d5b;
+    margin: 25px 0 0 0;
+	max-width: 360px;
+	font-weight: 500;
+}
+
+.masterfooter { background: #f6f7f9;  display: block !important; float: left; max-height: 215px;}
+.footer_logo {
+    position: absolute;
+    margin: 0 auto;
+    width: 100px;
+    left: 0;
+    right: 0;
+	top: 60px;
+	z-index: 1000;
+	max-width: 120px;
+}
+.footer_logo img {max-width: 120px;}
+
+
+.masterfooter .footer_menu {
+	top: 60px;
+	bottom: auto;
+}
+
+.masterfooter .header_right_ul {
+	position: absolute;
+    right: 3.4%;
+    top: 30px;
+}
+.smile {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+	color: #666;
+	z-index: 1000;
+}
+
+
+.footer_menu.yellow li a {
+	color: #ca9c22;
+}
+
+.footer_menu.green li a {
+	color: #379080;
+}
+
+.footer_menu.blue li a {
+	color: #bd9fe5;
+}
+
+.footer_menu.black li a {
+	color: #757575;
+}
+
+.footer_menu.lightblue li a {
+	color: #6c7379;
+}
+.platformimg {
+	position: absolute;
+    top: 10%;
+    right: 0;
+    left: 200px;
+    z-index: 100;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+@media only screen and (max-width: 1025px) {
+	.readydiv {
+		left: 3.4%;
+		top: 13%;
+		font-size: 30px;
+		font-weight: 600;
+		min-width: 92%;
+		text-align: center;
+		bottom: auto;
+	}
+	#fp-nav
+	{
+		display: none;
+	}
+	.nowyour {
+	    left: 20px;
+    bottom: 5%;
+    max-width: 80%;
+	}
+	.lookno {
+		top: 10%;
+	}
+	.looknofurther {
+		font-size: 6vw;
+		font-weight: 600;
+	}
+	.Shopwith {
+		font-size: 4vw;
+	}
+	.howiswork {
+		padding: 30px;
+		box-sizing: border-box;
+		width: 100%;
+	}
+	.makeshop {
+		font-size: 6vw;
+		font-weight: 600;
+		line-height: 120%;
+	}
+	.statics {
+		font-size: 4vw;
+     	margin-top: 30px;
+		max-width: 100%;
+	}
+	video.myVideo.bg_video_3 {
+		object-fit: contain;
+		width: 160%;
+		height: 620px;
+		top: 24%;
+		background: none;
+		left: -30px;
+	}
+
+	.neevrhide {
+		font-size: 5vw;
+    	font-weight: 600;
+		line-height: 120%;
+		bottom: auto;
+		left: 3.4%;
+		text-align: center;
+		max-width: 92%;
+		top: 80px;
+		min-width: 92%;
+	}
+	.ourproduct {
+		font-size: 4vw;
+		right: 10%;
+		bottom: 15%;
+		text-align: center;
+		z-index: 1000;
+		min-width: 80%;
+		max-width: 80%;
+	}
+	.ourproduct a {
+		font-size: 3vw;
+		float: none;
+		display: block;
+		max-width: 130px;
+		margin: 15px auto;
+	}
+	.platformmaster {
+		left: 3.4%;
+		top: 15%;
+		max-width: 45%;
+	}
+	.Onlineshopping {
+		font-size: 18px;
+		color: #435d5b;
+		margin: 15px 0 20px 0;
+		max-width: 360px;
+		font-weight: 500;
+	}
+	.Simplified {
+		font-size: 20px;
+		max-width: 240px;
+	}
+	.platform {
+		font-size: 5vw;
+		font-weight: 600;
+		color: #31342e;
+		line-height: 110%;
+	}
+	.platformimg {
+		position: absolute;
+		top: 20%;
+		right: 50px;
+		left: auto;
+		z-index: 100;
+		margin: 0;
+		max-width: 300px;
+	}
+}
+
+@media only screen and (max-width: 700px) { 
+	/* .anarvva_logo {
+		width: 120px;
+		margin: 20px auto;
+		float: none;
+		text-align: center;
+		display: block;
+	} */
+	.header_right_ul li {
+		float: left;
+		margin: 30px 0 0 20px;
+		padding: 0px;
+	}
+	.header_right_ul li:nth-child(3) {
+		 display: none;
+	}
+	.myVideo.bg_video_1 {
+		width: 100%;
+		height: 380px;
+		top: 100px;
+    	bottom: auto;
+	}
+
+	.myVideo.bg_video_2 {
+		width: 100%;
+		height: 380px;
+		bottom: 10px;
+    	top: auto;
+	}
+	
+	.myVideo.bg_video_3 {
+    	object-fit: contain;
+        width: 100%;
+        height: 620px;
+        top: 35%;
+        background: none;
+        vertical-align: baseline;
+        left: 6px;
+    	}
+    	.myVideo.bg_video_4 {
+		width: 100%;
+		height: 380px;
+		top: 220px;
+    	bottom: auto;
+	}
+	.myVideo.bg_video_6 {
+		width: 100%;
+    height: 380px;
+    top: 100px;
+    bottom: auto;
+	}
+	
+	.ourproduct a {
+    font-size: 5vw;
+    float: none;
+    display: block;
+    max-width: 130px;
+    margin: 15px auto;
+}
+
+    .neevrhide {
+    font-size: 7vw;
+    font-weight: 900;
+    line-height: 120%;
+    bottom: auto;
+    left: 3.4%;
+    text-align: center;
+    max-width: 92%;
+    top: 115px;
+    min-width: 92%;
+}
+
+.ourproduct {
+    font-size: 6vw;
+    right: 10%;
+    /* bottom: 15%; */
+    text-align: center;
+    z-index: 1000;
+    min-width: 80%;
+    max-width: 80%;
+}
+    	
+    	.heretohelp
+    	{
+    		font-size: 26px;
+        color: #555;
+        font-weight: 500;
+        margin: 30px 0;
+    	}
+	
+	/* .header_right_ul {
+		float: none;
+		margin: 0 auto;
+		padding: 0px;
+		display: block;
+		text-align: center;
+	}
+	.header_right_ul li {
+		float: none;
+		margin: 0px 0 0 15px;
+		padding: 0px;
+		display: inline-table;
+	} */
+	.readydiv {
+		/* left: 0; */
+		bottom: 20%;
+		font-size: 45px;
+		font-weight: 900;
+		min-width: 80%;
+		text-align: left;
+		top: auto;
+		/* border-top: 1px solid #64a0c7; */
+		padding: 0 80Px 0 20Px;
+		line-height: 100%;
+	}
+    .looknofurther{
+	    font-size: 40px;
+    font-weight: 900;
+    color: #31342e;
+    margin-top: 50px;
+    text-align: center;
+    max-width: 90%;
+    margin: 50px 20px 20px;
+    }
+    
+    .Shopwith
+    {
+        font-size: 6vw;
+    }
+    
+    .makeshop {
+    font-size: 8vw;
+    font-weight: 900;
+    line-height: 120%;
+    width: 100%;
+    margin-top: 40px;
+    }
+    
+    .statics {
+    font-size: 5vw;
+    margin-top: 50px;
+    max-width: 100%;
+}
+
+	.footer_menu
+	{
+		display: none;
+	}
+	.ExperienceNow { display: none;}
+	.nowyour {
+		font-size: 18px;
+		font-weight: normal;
+		max-width: 70%;
+		text-align: left;
+		padding-left: 15px;
+	}
+
+	.nowyour:after {
+		content: "";
+		width: 80px;
+		height: 02px;
+		background: #ed830b;
+		bottom: -2px;
+		right: 20px;
+		position: absolute;
+	}
+
+
+	.bg_white {
+		width: 100%;
+		height: 45vh;
+	}
+	.platform {
+		font-size: 30px;
+		font-weight: 600;
+		color: #31342e;
+		line-height: 115%;
+	}
+	.platformmaster {
+		position: absolute;
+		top: 10%;
+		left: 0;
+		text-align: left;
+		z-index: 1000;
+		max-width: 100%;
+		min-width: 100%;
+		box-sizing: border-box;
+		padding: 0 30px;
+	}
+	.Onlineshopping {
+		font-size: 18px;
+		color: #435d5b;
+		margin: 20px 0 20px 0;
+		max-width: 100%;
+		font-weight: 500;
+	}
+	.Simplified {
+		font-size: 24px;
+		color: #435d5b;
+		font-weight: 500;
+		max-width: 100%;
+	}
+	.platformimg {
+		
+		
+		top: auto;
+		right: 50px;
+		left: auto;
+		z-index: 100;
+		margin: 0;
+		max-width: 300px;
+	}
+
+}
